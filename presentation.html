@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React.js</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      * {
+        line-height: 1.41em;
+      }
+      h1, h2, h3 {
+        font-family: Arial, sans-serif;
+        font-weight: normal;
+        line-height: 1.41em;
+      }
+      .remark-slide-content { font-size: 2em; }
+      .remark-code, .remark-inline-code { font-family: monospace; font-size: 1.3rem; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# React.js
+
+## A JavaScript library for browser apps
+
+---
+
+# Schedule
+
+* intro to client-side app frameworks
+  * declarative rendering
+  * components
+* React.js setup
+* Basics on components
+* Template syntax (jsx)
+* Working with forms in React
+* ...
+
+---
+
+# Project
+
+### Building an in-browser Todo-app
+
+---
+
+# What is React?
+
+One of the three big client-side app frameworks/libraries
+
+two others: Angular, Vue.js
+
+---
+
+# Common concepts of React / Angular / Vue.js
+
+* *declarative rendering*  
+  User interactions modify the model, the view is updated automatically
+* *component-based architecture*  
+  We can define our own HTML Tags
+
+---
+
+# Common concepts of React / Angular / Vue.js
+
+* *declarative rendering*  
+  User interactions modify the model, the view is updated automatically
+* *component-based architecture*  
+  We can define our own HTML Tags
+
+---
+
+# Where React is special
+
+* JavaScript-based template syntax (JSX)
+* strict one-way data flow (parent >> child)
+* explicit state mutation via *setState()*
+
+---
+
+# Our first React app
+
+---
+
+# Installing React
+
+* install node+npm
+* install the *create-react-app* package:  
+  *npm install -g create-react-app*
+
+(alternative: follow along on codepen)
+
+---
+
+# Creating a new React app
+```bash
+create-react-app my-app
+cd my-app
+npm start
+```
+
+(see https://reactjs.org/docs/add-react-to-a-new-app.html)
+
+---
+
+# Default project structure
+
+* public/index.html, src/index.html: main entry points
+* App.js, App.css: define App component
+
+---
+
+# serving and building
+* *npm start*: starts the test server
+* *npm run build*: creates a production build
+
+---
+
+# Basic examples: a clock, a counter
+
+---
+
+# Basic jsx syntax
+
+**<** switches to HTML / XML
+
+**{** switches back to JavaScript
+
+---
+
+# Basic jsx syntax
+
+Example:
+```jsx
+let age = 35;
+let message = <div>
+                Hello, I am {age}
+                years old
+              </div>;
+```
+
+---
+
+# Component definition
+
+```js
+class App extends Component {
+  constructor() {
+    super();
+    this.increment = this.increment.bind(this);
+    this.state = {count: 0};
+  }
+
+  render() {
+    [...]
+  }
+
+  increment() {
+    this.setState(...)
+  }
+}
+```
+
+---
+
+# Manipulating state
+
+In a component, *this.state* holds the current state of the component
+
+Example:
+
+```js
+this.state = {
+  activePlayer: 'tom',
+  scores {
+    'tom': 23,
+    'emily': 19,
+    'anne': 32
+  }
+}
+
+```
+
+---
+
+# Manipulating state
+
+The content of this.state should never be modified directly.  
+Instead, call *this.setState()*
+
+---
+
+# Manipulating state
+
+example:
+```jsx
+  this.setState({message: 'hello', importance: 0});
+  this.setState({importance: 1});
+  // result: this.state === {message: 'hello', importance: 1}
+```
+
+---
+
+# Manipulating state
+
+If the state depends on the old state, use the functional variant:
+```jsx
+setState((oldState) => { [...] return newState; })
+```
+
+---
+
+# Calling methods from the template
+
+Methods that are called from the jsx template must be bound after they have been defined:
+
+---
+
+# Calling methods from the template
+
+```jsx
+constructor() {
+  super();
+  this.increment = this.increment.bind(this);
+}
+
+render() {
+  return <button onClick={this.increment}>...</button>
+}
+
+increment() {
+  this.setState([...])
+}
+```
+
+---
+
+# Template syntax (jsx) in detail
+
+---
+
+# Template syntax (jsx)
+
+We already know:
+
+**<** gets you into HTML / XML
+
+**{** gets you into JavaScript
+
+---
+# Binding attributes
+```jsx
+<img src={ getImageUrl() }>
+```
+
+---
+# Binding events
+```jsx
+<button onClick={this.increment}> + </button>
+```
+
+---
+# Repeating elements
+```jsx
+<ul>
+  {this.state.todos.map((todo, index) => 
+    <li key={index}>{todo}</li>
+  )}
+</ul>
+```
+
+---
+# Conditional display
+```jsx
+{this.state.error ? <span>Error occured</span> : ''}
+```
+
+---
+# CSS classes
+```jsx
+<div className={'message' + this.state.error ? ' error' : ''}>
+  ...
+</div>
+```
+
+---
+# Styling elements
+```jsx
+  <div style={ {
+    color: '#fff',
+    fontSize: getFontSize()
+    } }>
+  </div>
+```
+
+---
+# Events
+```jsx
+<button onClick={ this.onClick }>
+  click me!
+</button>
+```
+list of browser events: https://www.w3schools.com/jsref/dom_obj_event.asp
+
+---
+# Example: Todo app
+
+---
+# Working with forms
+```jsx
+<input
+  value={this.state.nameInputContent}
+  onChange={this.handleChange}/>
+
+handleChange(event) {
+  this.setState({
+    nameInputContent: event.target.value
+  });
+}
+```
+
+
+
+
+
+---
+
+# Homework
+
+* create a calendar app
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
