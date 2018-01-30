@@ -133,7 +133,7 @@ example:
 let a = <div> Hello! I am {2018 - 1970} years old!</div>
 ```
 
-All tags must be written in XML syntax - e.g. <br/>
+All tags must be written in XML syntax - e.g. ```<br/>```
 
 ## binding events
 ```jsx
