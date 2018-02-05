@@ -62,7 +62,7 @@ class App extends Component {
   }
 
   increment() {
-    this.setState
+    this.setState(...)
   }
 }
 ```
@@ -139,6 +139,7 @@ All tags must be written in XML syntax - e.g. ```<br/>```
 ```jsx
   <button onClick={this.increment}> + </button>
 ```
+list of browser events: https://www.w3schools.com/jsref/dom_obj_event.asp
 
 ## repeating elements
 ```jsx
@@ -163,12 +164,6 @@ All tags must be written in XML syntax - e.g. ```<br/>```
 ```jsx
   <div style={ {color: '#fff', fontSize: getFontSize()} }>
 ```
-
-## events
-```jsx
-  <button onClick={ this.onClick }>click me!</button>
-```
-list of browser events: https://www.w3schools.com/jsref/dom_obj_event.asp
 
 
 
