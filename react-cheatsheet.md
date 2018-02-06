@@ -24,9 +24,11 @@ Basics
 * install "create-react-app": ```npm install -g create-react-app```
 
 ## creating a new React app
+```
 create-react-app my-app
 cd my-app
 npm start
+```
 
 https://reactjs.org/docs/add-react-to-a-new-app.html
 
